@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-['Outfit'] text-brown-900 bg-honey-50 antialiased selection:bg-honey-200 selection:text-honey-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Playfair_Display'] font-semibold tracking-tight text-brown-950;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-brown-950 bg-honey-500 hover:bg-honey-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-honey-500 transition-all duration-300 transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-honey-500 text-base font-medium rounded-full shadow-sm text-honey-600 bg-transparent hover:bg-honey-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-honey-500 transition-all duration-300;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl;
+  }
+}
