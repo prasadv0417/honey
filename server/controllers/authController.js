@@ -236,9 +236,17 @@ const deleteAddress = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Logout user / clear cookie
+// @route   POST /api/users/logout
+// @access  Public
+const logoutUser = asyncHandler(async (req, res) => {
+  res.status(200).json({ message: 'Logged out successfully' });
+});
+
 export {
   registerUser,
   loginUser,
+  logoutUser,
   getMe,
   updateUserProfile,
   forgotPassword,

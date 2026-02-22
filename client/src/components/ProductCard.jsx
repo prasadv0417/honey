@@ -3,11 +3,23 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 
 const ProductCard = ({ product }) => {
+  // images can be [{url, public_id}] (Cloudinary) or [string] (plain URL)
+  const getImageUrl = () => {
+    if (!product.images || product.images.length === 0) return 'https://images.unsplash.com/photo-1587049352847-4d431cde70c2?auto=format&fit=crop&q=80&w=800';
+    const first = product.images[0];
+    return typeof first === 'string' ? first : first.url;
+  };
+
+  // Get lowest size price
+  const displayPrice = product.sizes?.length > 0
+    ? Math.min(...product.sizes.map(s => s.price))
+    : product.price;
+
   return (
     <div className="glass-card overflow-hidden group hover:shadow-2xl transition-all duration-300 flex flex-col h-full border border-honey-100 bg-white">
       <Link to={`/product/${product._id}`} className="block relative overflow-hidden aspect-square">
         <img
-          src={product.images[0] || 'https://images.unsplash.com/photo-1587049352847-4d431cde70c2?auto=format&fit=crop&q=80&w=800'}
+          src={getImageUrl()}
           alt={product.name}
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
         />
@@ -21,7 +33,7 @@ const ProductCard = ({ product }) => {
               {product.name}
             </h3>
           </Link>
-          <span className="text-lg font-bold text-honey-600">₹{product.price}</span>
+          <span className="text-lg font-bold text-honey-600">₹{displayPrice}</span>
         </div>
 
         <p className="text-brown-600 text-sm mb-4 line-clamp-2 flex-grow">

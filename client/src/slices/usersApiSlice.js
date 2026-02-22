@@ -24,12 +24,34 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
       }),
     }),
-    profile: builder.mutation({
+    getProfile: builder.query({
+      query: () => ({
+        url: `${USERS_URL}/profile`,
+      }),
+      providesTags: ['User'],
+    }),
+    updateProfile: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/profile`,
         method: 'PUT',
         body: data,
       }),
+      invalidatesTags: ['User'],
+    }),
+    addAddress: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/address`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['User'],
+    }),
+    deleteAddress: builder.mutation({
+      query: (addressId) => ({
+        url: `${USERS_URL}/address/${addressId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['User'],
     }),
   }),
 });
@@ -38,5 +60,8 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useRegisterMutation,
-  useProfileMutation,
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+  useAddAddressMutation,
+  useDeleteAddressMutation,
 } = usersApiSlice;
