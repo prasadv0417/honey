@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { toast } from 'react-toastify';
- const Navbar = () => {
+const Navbar = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
   const isAdmin = userInfo?.role === 'admin';
@@ -134,6 +134,8 @@ import { toast } from 'react-toastify';
             <>
               <Link to="/" className="block text-brown-700 py-2" onClick={() => setMobileMenuOpen(false)}>Home</Link>
               <Link to="/products" className="block text-brown-700 py-2" onClick={() => setMobileMenuOpen(false)}>Shop</Link>
+              <Link to="/about" className="block text-brown-700 py-2" onClick={() => setMobileMenuOpen(false)}>Our Story</Link>
+              <Link to="/contact" className="block text-brown-700 py-2" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
               <Link to="/cart" className="block text-brown-700 py-2" onClick={() => setMobileMenuOpen(false)}>Cart ({cartCount})</Link>
               {userInfo && <Link to="/profile" className="block text-brown-700 py-2" onClick={() => setMobileMenuOpen(false)}>My Profile</Link>}
             </>

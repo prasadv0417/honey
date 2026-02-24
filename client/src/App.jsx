@@ -13,6 +13,8 @@ import Register from './pages/Auth/Register';
 import ForgotPassword from './pages/Auth/ForgotPassword';
 import ResetPassword from './pages/Auth/ResetPassword';
 import Profile from './pages/Customer/Profile';
+import About from './pages/Customer/About';
+import Contact from './pages/Customer/Contact';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import { ToastContainer } from 'react-toastify';
@@ -34,6 +36,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/resetpassword/:resettoken" element={<ResetPassword />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
 
             {/* Private Routes */}
             <Route path="" element={<PrivateRoute />}>
