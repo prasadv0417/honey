@@ -113,9 +113,9 @@ const paymentCallback = asyncHandler(async (req, res) => {
         order.orderStatus = 'Processing';
         order.paymentId = req.body.TXNID || 'MOCK_TXN_ID';
         await order.save();
-        return res.redirect(`http://localhost:5173/payment/success?orderId=${orderId}`);
+        return res.redirect(`${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/success?orderId=${orderId}`);
       }
-      return res.redirect(`http://localhost:5173/payment/failed`);
+      return res.redirect(`${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/failed`);
   }
 
   const isVerifySignature = PaytmChecksum.verifySignature(
